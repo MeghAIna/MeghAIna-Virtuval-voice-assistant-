@@ -14,13 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify file structure
-        run: |
-          echo "Listing files in the current directory:"
-          ls -la
-          echo "Listing files in the 'android' subdirectory:"
-          ls -la android
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
