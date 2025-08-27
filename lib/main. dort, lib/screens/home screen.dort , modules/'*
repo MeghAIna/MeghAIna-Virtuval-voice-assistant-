@@ -1,0 +1,16 @@
+MeghAIna-Virtuval-voice-assistant/
+ ├── .github/
+ │   └── workflows/
+ │       └── flutter.yml   ✅
+ ├── lib/
+ │   ├── main.dart         ✅
+ │   └── screens/
+ │        └── home_screen.dart
+ │   └── modules/
+ │        ├── music.dart
+ │        ├── deep_search.dart
+ │        ├── iot_control.dart
+ │        └── self_evolving.dart
+ ├── pubspec.yaml          ✅
+ ├── .gitignore            ✅
+ └── README.md             (optional)
