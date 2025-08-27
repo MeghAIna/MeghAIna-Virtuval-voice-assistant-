@@ -1,15 +1,15 @@
-name: Flutter Build APK
+name: Android APK Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,16 +17,26 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'   # నీ project కి match అయ్యే Flutter version
+          flutter-version: '3.24.0'
+          channel: 'stable'
 
-      - name: Install dependencies
+      - name: Get Flutter dependencies
         run: flutter pub get
 
-      - name: Build release APK
+      - name: Verify project structure
+        run: |
+          echo "Listing files in the project root..."
+          ls -la
+          echo "Listing files in the android directory..."
+          ls -la android
+
+      - name: Build Android APK
         run: flutter build apk --release
 
-      - name: Upload APK artifact
+      - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MeghAIna-release-apk
+          name: app-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
+          
